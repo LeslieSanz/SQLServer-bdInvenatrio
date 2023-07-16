@@ -17,7 +17,7 @@ public class Producto {
     
     //categoria
     private String nomcat;
-    private String cantcat;
+    private int cantcat;
     
     
     //ubicacion
@@ -33,13 +33,7 @@ public class Producto {
         this.nomcat = nomcat;
     }
 
-    public String getCantcat() {
-        return cantcat;
-    }
 
-    public void setCantcat(String cantcat) {
-        this.cantcat = cantcat;
-    }
 
     public String getCodpro() {
         return codpro;
@@ -63,6 +57,14 @@ public class Producto {
 
     public void setStkpro(String stkpro) {
         this.stkpro = stkpro;
+    }
+
+    public int getCantcat() {
+        return cantcat;
+    }
+
+    public void setCantcat(int cantcat) {
+        this.cantcat = cantcat;
     }
 
 }

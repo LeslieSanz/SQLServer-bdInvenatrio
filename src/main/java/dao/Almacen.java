@@ -28,7 +28,7 @@ public class Almacen {
         while(rs.next()){
             Producto c=new Producto();
             c.setNomcat(rs.getString(1));
-            c.setCantcat(rs.getString(2));
+            c.setCantcat(rs.getInt(2));
             lis.add(c);        }
     }catch(Exception ex){
         ex.printStackTrace();
