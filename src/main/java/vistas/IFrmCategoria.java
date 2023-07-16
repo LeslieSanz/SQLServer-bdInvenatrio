@@ -21,7 +21,7 @@ public class IFrmCategoria extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     public IFrmCategoria() {
         initComponents();
-        setSize(966,553);
+        setSize(1200,553);
         establecerColumnas();
         muestraTabla();
 
@@ -197,7 +197,7 @@ public class IFrmCategoria extends javax.swing.JInternalFrame {
                         .addComponent(btnEliminarCat)
                         .addGap(27, 27, 27)
                         .addComponent(btnAgregarCat)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
