@@ -33,6 +33,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jmiCategorias = new javax.swing.JMenuItem();
         jmiCatalogoProd = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jmiRegistroEntradas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,6 +85,15 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/entradita.png"))); // NOI18N
         jMenu2.setText("Entradas");
         jMenu2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+
+        jmiRegistroEntradas.setText("Registro");
+        jmiRegistroEntradas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiRegistroEntradasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiRegistroEntradas);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -120,8 +130,18 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuProductosActionPerformed
 
     private void jmiCatalogoProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCatalogoProdActionPerformed
-
+        actualizarInterfaz();
+        IFrmProducto p= new IFrmProducto();
+        contenedore.add(p);
+        p.show();
     }//GEN-LAST:event_jmiCatalogoProdActionPerformed
+
+    private void jmiRegistroEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistroEntradasActionPerformed
+        actualizarInterfaz();
+        IFrmEntrada e= new IFrmEntrada();
+        contenedore.add(e);
+        e.show();
+    }//GEN-LAST:event_jmiRegistroEntradasActionPerformed
     
     //Para que no se sobrepongan los frames internos
     public static void actualizarInterfaz(){
@@ -173,5 +193,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuProductos;
     private javax.swing.JMenuItem jmiCatalogoProd;
     private javax.swing.JMenuItem jmiCategorias;
+    private javax.swing.JMenuItem jmiRegistroEntradas;
     // End of variables declaration//GEN-END:variables
 }

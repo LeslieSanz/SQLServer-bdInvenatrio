@@ -9,30 +9,30 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.Producto;
+import modelo.producto;
 import util.Conexion;
 
-/**
- *
- * @author lesly
- */
-public class Almacen {
-    //lista categorias con cantidad de productos por cada una
-    public List<Producto> lisCategoria(){
-    List<Producto> lis=new ArrayList();
+public class productoDAO {
+   //lista productos por categoria
+    public List<producto> lisProdxCat(String categoria){
+    List<producto> lis=new ArrayList();
     Connection cn=Conexion.getConexion();
+    String sql="{call sp_listaProdCat(?)}";
     try{
-        String sql="{call sp_cantCategoria}";
         CallableStatement st=cn.prepareCall(sql);
+        st.setString(1, categoria);
         ResultSet rs=st.executeQuery();
+        
         while(rs.next()){
-            Producto c=new Producto();
-            c.setNomcat(rs.getString(1));
-            c.setCantcat(rs.getInt(2));
-            lis.add(c);        }
+            producto p=new producto();
+            p.setCodpro(rs.getString(1));
+            p.setDespro(rs.getString(2));
+            p.setPrepro(rs.getDouble(3));
+            p.setStkpro(rs.getInt(4));
+            lis.add(p);        }
     }catch(Exception ex){
         ex.printStackTrace();
     }
     return lis;
-    }
+    } 
 }

@@ -8,7 +8,7 @@ package modelo;
  *
  * @author lesly
  */
-public class Producto {
+public class Categoria {
     //producto
     private String codpro;
     private String despro;
@@ -16,8 +16,10 @@ public class Producto {
     
     
     //categoria
+    private String codcat;
     private String nomcat;
     private int cantcat;
+    private String ubi;
     
     
     //ubicacion
@@ -65,6 +67,22 @@ public class Producto {
 
     public void setCantcat(int cantcat) {
         this.cantcat = cantcat;
+    }
+
+    public String getUbi() {
+        return ubi;
+    }
+
+    public void setUbi(String ubi) {
+        this.ubi = ubi;
+    }
+
+    public String getCodcat() {
+        return codcat;
+    }
+
+    public void setCodcat(String codcat) {
+        this.codcat = codcat;
     }
 
 }
