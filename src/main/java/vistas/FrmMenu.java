@@ -15,6 +15,7 @@ public class FrmMenu extends javax.swing.JFrame {
      */
     public FrmMenu() {
         initComponents();
+        this.setLocationRelativeTo(this);
     }
 
     /**
@@ -26,74 +27,66 @@ public class FrmMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlFondo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        jLabel2 = new javax.swing.JLabel();
+        contenedore = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuProductos = new javax.swing.JMenu();
+        jmiCategorias = new javax.swing.JMenuItem();
+        jmiCatalogoProd = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pnlFondo.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/frase_motivadora_menu.png"))); // NOI18N
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        contenedore.setBackground(new java.awt.Color(204, 204, 204));
+        contenedore.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout contenedoreLayout = new javax.swing.GroupLayout(contenedore);
+        contenedore.setLayout(contenedoreLayout);
+        contenedoreLayout.setHorizontalGroup(
+            contenedoreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 702, Short.MAX_VALUE)
+        );
+        contenedoreLayout.setVerticalGroup(
+            contenedoreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoMenu.png"))); // NOI18N
+        jMenuProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/productos.png"))); // NOI18N
+        jMenuProductos.setText("Productos");
+        jMenuProductos.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jMenuProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuProductosActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout pnlFondoLayout = new javax.swing.GroupLayout(pnlFondo);
-        pnlFondo.setLayout(pnlFondoLayout);
-        pnlFondoLayout.setHorizontalGroup(
-            pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDesktopPane1)
-                .addContainerGap())
-        );
-        pnlFondoLayout.setVerticalGroup(
-            pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDesktopPane1)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jmiCategorias.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        jmiCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/categorias 1.png"))); // NOI18N
+        jmiCategorias.setText("Categorías");
+        jmiCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCategoriasActionPerformed(evt);
+            }
+        });
+        jMenuProductos.add(jmiCategorias);
 
-        jMenu1.setText("Productos");
+        jmiCatalogoProd.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        jmiCatalogoProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/productos.png"))); // NOI18N
+        jmiCatalogoProd.setText("Catalogo");
+        jmiCatalogoProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCatalogoProdActionPerformed(evt);
+            }
+        });
+        jMenuProductos.add(jmiCatalogoProd);
 
-        jMenuItem3.setText("Categorias");
-        jMenu1.add(jMenuItem3);
+        jMenuBar1.add(jMenuProductos);
 
-        jMenuItem1.setText("Catalogo");
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText(" Entradas");
-        jMenu1.add(jMenuItem2);
-
-        jMenuBar1.add(jMenu1);
-
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/entradita.png"))); // NOI18N
         jMenu2.setText("Entradas");
+        jMenu2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -102,16 +95,47 @@ public class FrmMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contenedore)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(contenedore)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jmiCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCategoriasActionPerformed
+        actualizarInterfaz();
+        IFrmCategoria c= new IFrmCategoria();
+        contenedore.add(c);
+        c.show();
+    }//GEN-LAST:event_jmiCategoriasActionPerformed
+
+    private void jMenuProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProductosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuProductosActionPerformed
+
+    private void jmiCatalogoProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCatalogoProdActionPerformed
+
+    }//GEN-LAST:event_jmiCatalogoProdActionPerformed
+    
+    //Para que no se sobrepongan los frames internos
+    public static void actualizarInterfaz(){
+        contenedore.removeAll();
+        contenedore.revalidate();
+        contenedore.repaint();
+    }
     /**
      * @param args the command line arguments
      */
@@ -147,17 +171,15 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    public static javax.swing.JDesktopPane contenedore;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JPanel pnlFondo;
+    private javax.swing.JMenu jMenuProductos;
+    private javax.swing.JMenuItem jmiCatalogoProd;
+    private javax.swing.JMenuItem jmiCategorias;
     // End of variables declaration//GEN-END:variables
 }
