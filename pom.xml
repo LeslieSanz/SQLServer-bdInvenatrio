@@ -15,6 +15,58 @@
     <artifactId>mssql-jdbc</artifactId>
     <version>6.4.0.jre9</version>
     </dependency>
+    
+        <dependency>
+     <groupId>jfreechart</groupId>
+     <artifactId>hamcrest-core-1.3</artifactId>
+     <version>1.3</version>
+    </dependency>
+      <dependency>
+           <groupId>jfreechart</groupId>
+            <artifactId>jcommon-1.0.23</artifactId>
+            <version>1.3</version>
+         </dependency>
+          <dependency>
+           <groupId>jfreechart</groupId>  
+          <artifactId>jfreechart-1.0.19</artifactId>
+        <version>1.3</version>
+         </dependency>
+              <dependency>
+           <groupId>jfreechart</groupId> 
+          <artifactId>jfreechart-1.0.19-experimental</artifactId>
+           <version>1.3</version>
+         </dependency>
+      <dependency>
+           <groupId>jfreechart</groupId> 
+      <artifactId>jfreechart-1.0.19-swt</artifactId>
+       <version>1.3</version>
+         </dependency>
+      <dependency>
+           <groupId>jfreechart</groupId> 
+            <artifactId>jfreesvg-2.0</artifactId>
+       <version>1.3</version>
+       </dependency>
+      <dependency>
+           <groupId>jfreechart</groupId> 
+             <artifactId>junit-4.11</artifactId>
+              <version>1.3</version>
+       </dependency>
+      <dependency>
+           <groupId>jfreechart</groupId> 
+              <artifactId>orsoncharts-1.4-eval-nofx</artifactId>
+              <version>1.3</version>
+       </dependency>
+        <dependency>
+           <groupId>jfreechart</groupId>  
+       <artifactId>orsonpdf-1.6-eval</artifactId>
+              <version>1.3</version>
+       </dependency>
+       <dependency>
+           <groupId>jfreechart</groupId>
+               <artifactId>swtgraphics2d</artifactId>
+           <version>1.3</version>
+    </dependency>
+    
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
