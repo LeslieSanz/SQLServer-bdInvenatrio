@@ -32,6 +32,9 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuProductos = new javax.swing.JMenu();
         jmiCategorias = new javax.swing.JMenuItem();
         jmiCatalogoProd = new javax.swing.JMenuItem();
+        jMenuVenta = new javax.swing.JMenu();
+        jmigenerarVenta = new javax.swing.JMenuItem();
+        jmireporte = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +83,28 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuProductos);
 
+        jMenuVenta.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ventas.png"))); // NOI18N
+        jMenuVenta.setText("Venta");
+        jMenuVenta.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+
+        jmigenerarVenta.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        jmigenerarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/generarV.png"))); // NOI18N
+        jmigenerarVenta.setText("Generar Venta");
+        jMenuVenta.add(jmigenerarVenta);
+
+        jmireporte.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        jmireporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reporte.png"))); // NOI18N
+        jmireporte.setText("Reporte");
+        jmireporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmireporteActionPerformed(evt);
+            }
+        });
+        jMenuVenta.add(jmireporte);
+
+        jMenuBar1.add(jMenuVenta);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -96,7 +121,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(contenedore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,6 +144,13 @@ public class FrmMenu extends javax.swing.JFrame {
         contenedore.add(p);
         p.show();
     }//GEN-LAST:event_jmiCatalogoProdActionPerformed
+
+    private void jmireporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmireporteActionPerformed
+        actualizarInterfaz();
+        IFrmReporte r= new IFrmReporte();
+        contenedore.add(r);
+        r.show();
+    }//GEN-LAST:event_jmireporteActionPerformed
     
     //Para que no se sobrepongan los frames internos
     public static void actualizarInterfaz(){
@@ -167,7 +199,10 @@ public class FrmMenu extends javax.swing.JFrame {
     public static javax.swing.JDesktopPane contenedore;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuProductos;
+    private javax.swing.JMenu jMenuVenta;
     private javax.swing.JMenuItem jmiCatalogoProd;
     private javax.swing.JMenuItem jmiCategorias;
+    private javax.swing.JMenuItem jmigenerarVenta;
+    private javax.swing.JMenuItem jmireporte;
     // End of variables declaration//GEN-END:variables
 }
