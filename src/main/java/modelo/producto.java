@@ -13,6 +13,8 @@ public class producto {
     private String despro;
     private double prepro;
     private int stkpro;
+    private Categoria categoria;
+    private Proveedor proveedor;
 
     public String getCodpro() {
         return codpro;
@@ -44,6 +46,22 @@ public class producto {
 
     public void setStkpro(int stkpro) {
         this.stkpro = stkpro;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
     }
     
 }

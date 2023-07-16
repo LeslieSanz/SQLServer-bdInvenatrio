@@ -32,8 +32,6 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuProductos = new javax.swing.JMenu();
         jmiCategorias = new javax.swing.JMenuItem();
         jmiCatalogoProd = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jmiRegistroEntradas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,8 +69,8 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuProductos.add(jmiCategorias);
 
         jmiCatalogoProd.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
-        jmiCatalogoProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/productos.png"))); // NOI18N
-        jmiCatalogoProd.setText("Catalogo");
+        jmiCatalogoProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/entradita.png"))); // NOI18N
+        jmiCatalogoProd.setText("Registro");
         jmiCatalogoProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiCatalogoProdActionPerformed(evt);
@@ -81,20 +79,6 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuProductos.add(jmiCatalogoProd);
 
         jMenuBar1.add(jMenuProductos);
-
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/entradita.png"))); // NOI18N
-        jMenu2.setText("Entradas");
-        jMenu2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-
-        jmiRegistroEntradas.setText("Registro");
-        jmiRegistroEntradas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiRegistroEntradasActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jmiRegistroEntradas);
-
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -135,13 +119,6 @@ public class FrmMenu extends javax.swing.JFrame {
         contenedore.add(p);
         p.show();
     }//GEN-LAST:event_jmiCatalogoProdActionPerformed
-
-    private void jmiRegistroEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistroEntradasActionPerformed
-        actualizarInterfaz();
-        IFrmEntrada e= new IFrmEntrada();
-        contenedore.add(e);
-        e.show();
-    }//GEN-LAST:event_jmiRegistroEntradasActionPerformed
     
     //Para que no se sobrepongan los frames internos
     public static void actualizarInterfaz(){
@@ -188,11 +165,9 @@ public class FrmMenu extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane contenedore;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuProductos;
     private javax.swing.JMenuItem jmiCatalogoProd;
     private javax.swing.JMenuItem jmiCategorias;
-    private javax.swing.JMenuItem jmiRegistroEntradas;
     // End of variables declaration//GEN-END:variables
 }
