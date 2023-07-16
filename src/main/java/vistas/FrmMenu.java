@@ -35,6 +35,8 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuVenta = new javax.swing.JMenu();
         jmigenerarVenta = new javax.swing.JMenuItem();
         jmireporte = new javax.swing.JMenuItem();
+        jmiProveedor = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +93,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jmigenerarVenta.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         jmigenerarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/generarV.png"))); // NOI18N
         jmigenerarVenta.setText("Generar Venta");
+        jmigenerarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmigenerarVentaActionPerformed(evt);
+            }
+        });
         jMenuVenta.add(jmigenerarVenta);
 
         jmireporte.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
@@ -104,6 +111,21 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuVenta.add(jmireporte);
 
         jMenuBar1.add(jMenuVenta);
+
+        jmiProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Proveedor.png"))); // NOI18N
+        jmiProveedor.setText("Proveedor");
+        jmiProveedor.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Lista.png"))); // NOI18N
+        jMenuItem1.setText("Listar Proveedor");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jmiProveedor.add(jMenuItem1);
+
+        jMenuBar1.add(jmiProveedor);
 
         setJMenuBar(jMenuBar1);
 
@@ -151,6 +173,18 @@ public class FrmMenu extends javax.swing.JFrame {
         contenedore.add(r);
         r.show();
     }//GEN-LAST:event_jmireporteActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        actualizarInterfaz();
+        IFrmProveedor prov= new IFrmProveedor();
+        contenedore.add(prov);
+        prov.show();
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jmigenerarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmigenerarVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmigenerarVentaActionPerformed
     
     //Para que no se sobrepongan los frames internos
     public static void actualizarInterfaz(){
@@ -198,10 +232,12 @@ public class FrmMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane contenedore;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu jMenuProductos;
     private javax.swing.JMenu jMenuVenta;
     private javax.swing.JMenuItem jmiCatalogoProd;
     private javax.swing.JMenuItem jmiCategorias;
+    private javax.swing.JMenu jmiProveedor;
     private javax.swing.JMenuItem jmigenerarVenta;
     private javax.swing.JMenuItem jmireporte;
     // End of variables declaration//GEN-END:variables

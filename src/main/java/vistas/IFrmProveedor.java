@@ -4,7 +4,10 @@
  */
 package vistas;
 
+
+import dao.proveedorDAO;
 import javax.swing.table.DefaultTableModel;
+import modelo.Proveedor;
 
 /**
  *
@@ -12,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class IFrmProveedor extends javax.swing.JInternalFrame {
     DefaultTableModel modelo =new DefaultTableModel();
+    proveedorDAO provd = new proveedorDAO();
     /**
      * Creates new form IFrmProveedor
      */
@@ -27,6 +31,19 @@ public class IFrmProveedor extends javax.swing.JInternalFrame {
         modelo.addColumn("Telefono");
         modelo.addColumn("Codigo Dirección");
         tblProveedor.setModel(modelo);
+    }
+    
+    private void mostrarListaProveedor(){
+        modelo.setRowCount(0);
+         for (Proveedor prov : provd.lisProveedor()) {
+             Object v[]={
+                 prov.getCodprov(),
+                 prov.getNombre(),
+                 prov.getTelf(),
+                 prov.getDireccion(),
+             };
+             modelo.addRow(v);
+         }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,6 +75,11 @@ public class IFrmProveedor extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tblProveedor);
 
         btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
 
@@ -71,40 +93,43 @@ public class IFrmProveedor extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(68, 68, 68)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(67, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnMostrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEliminar)
-                        .addGap(92, 92, 92))))
+                .addComponent(jLabel1)
+                .addGap(32, 32, 32)
+                .addComponent(btnMostrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEliminar)
+                .addGap(92, 92, 92))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(223, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(114, 114, 114))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(btnMostrar)
                     .addComponent(btnEliminar))
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
+                .addGap(67, 67, 67))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        mostrarListaProveedor();
+    }//GEN-LAST:event_btnMostrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

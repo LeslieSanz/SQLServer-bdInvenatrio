@@ -18,7 +18,7 @@ public class proveedorDAO {
     List<Proveedor> lis=new ArrayList();
     Connection cn=Conexion.getConexion();
     try{
-        String sql="select cod_prov,nom_prov,telf_prov from Proveedor";
+        String sql="select cod_prov,nom_prov,telf_prov,Direccion_cod_direc from Proveedor";
         PreparedStatement st=cn.prepareStatement(sql);
         ResultSet rs=st.executeQuery();
         while(rs.next()){
@@ -26,6 +26,7 @@ public class proveedorDAO {
             prov.setCodprov(rs.getString(1));
             prov.setNombre(rs.getString(2));
             prov.setTelf(rs.getString(3));
+            prov.setDireccion(rs.getString(4));
             lis.add(prov);        }
     }catch(Exception ex){
         ex.printStackTrace();
