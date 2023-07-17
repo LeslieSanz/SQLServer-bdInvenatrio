@@ -9,7 +9,7 @@ package modelo;
  * @author esther
  */
 public class Venta {
-    public int mes;
+     public int mes;
     public int cantidad;
     public double total;
     public String Lmes(){
@@ -59,4 +59,5 @@ public class Venta {
     public void setTotal(double total) {
         this.total = total;
     }
+    
 }

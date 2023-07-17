@@ -72,7 +72,7 @@ public class IFrmReporte extends javax.swing.JInternalFrame {
         );
         pnlreporteLayout.setVerticalGroup(
             pnlreporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 267, Short.MAX_VALUE)
+            .addGap(0, 309, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -99,9 +99,9 @@ public class IFrmReporte extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtanio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnlineal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(pnlreporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -111,7 +111,6 @@ public class IFrmReporte extends javax.swing.JInternalFrame {
         int an=Integer.parseInt(txtanio.getText());
         XYSeries series = new XYSeries("Datos");
         for(Venta v:vd.lisMes(an)){
-           //double mes = (double) x.getMes();
            series.addOrUpdate(v.getMes(), v.getTotal()); 
         }
         XYSeriesCollection dataset = new XYSeriesCollection();
