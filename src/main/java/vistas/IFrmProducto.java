@@ -412,7 +412,7 @@ public class IFrmProducto extends javax.swing.JInternalFrame {
      
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
        //Excepción para validar que todos los campos estén llenos
-        if (txtCodPro.getText().isEmpty() || txtDescripcion.getText().isEmpty() ||
+        if (txtDescripcion.getText().isEmpty() ||
            cbxProv.getSelectedIndex()== 0 || txtPrecio.getText().isEmpty()) {
         mostrarMensajeError("Se debe llenar todos los campos para registrar un producto.");
         return;
@@ -436,7 +436,7 @@ public class IFrmProducto extends javax.swing.JInternalFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
     if ( txtCant.getText().isEmpty() ) {
-        mostrarMensajeError("Se debe seleccionar un producto para hacer una entrada.");
+        mostrarMensajeError("Se debe registrar una cantidad para hacer una entrada.");
         return;
         }
         
@@ -456,7 +456,7 @@ public class IFrmProducto extends javax.swing.JInternalFrame {
     private void btnMostrarPanelEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarPanelEntradaActionPerformed
     //Excepción para validar que todos los campos estén llenos
         if ( cbxCate.getSelectedIndex()== 0 ) {
-        mostrarMensajeError("Se debe seleccionar un producto para hacer una entrada.");
+        mostrarMensajeError("Se debe ingresar una categoria para hacer una entrada.");
         return;
         }
         

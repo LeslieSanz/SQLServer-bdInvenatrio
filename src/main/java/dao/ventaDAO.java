@@ -7,8 +7,13 @@ package dao;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Types;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Venta;
 import util.Conexion;
 
@@ -38,4 +43,32 @@ public class ventaDAO {
    }   
   return lis;    
   } 
+    
+  public String calculaStockTotal(int anio) {
+    Connection cn = Conexion.getConexion();
+    double ganancia=0;
+
+    try {
+        String sql = "{? = call fx_gananciaxAnio(?)}";
+        CallableStatement st = cn.prepareCall(sql);
+        st.registerOutParameter(1, Types.DECIMAL);
+        st.setInt(2, anio);
+        st.execute();
+        ganancia = st.getDouble(1);
+
+    } catch (SQLException ex) {
+        Logger.getLogger(entradaDAO.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        try {
+            cn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(entradaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    // Formatear la ganancia con dos decimales y separadores de miles
+    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+    String gananciaFormateada = decimalFormat.format(ganancia);
+    
+    return gananciaFormateada;
+    }
 }
