@@ -38,4 +38,54 @@ public class ventaDAO {
    }   
   return lis;    
   } 
+    
+    
+    public List<Venta> lisVentaDatos(String codven){
+   List<Venta> lis=new ArrayList();
+   Connection cn=Conexion.getConexion();
+   String sql="{call sp_datosVenta(?)}";   
+   try{
+     CallableStatement st=cn.prepareCall(sql);
+     st.setString(1, codven);
+     ResultSet rs = st.executeQuery();
+     
+     while(rs.next()){
+        Venta v=new Venta();
+        v.setCodven(rs.getString(1));
+        v.setFecVen(rs.getString(2));
+        v.setNomCli(rs.getString(3));
+        v.setNomVen(rs.getString(4));
+        lis.add(v);
+     }
+   }catch(Exception ex){
+     ex.printStackTrace();
+   }   
+  return lis;    
+  }
+    
+    public List<Venta> lisTotVen(String codven){   
+   List<Venta> lis=new ArrayList();
+   Connection cn=Conexion.getConexion();
+   String sql="{call sp_calTotVen(?)}";   
+   try{
+     CallableStatement st=cn.prepareCall(sql);
+     st.setString(1, codven);
+     ResultSet rs = st.executeQuery();
+     
+     while(rs.next()){
+        Venta v=new Venta();
+        v.setOpGrav(rs.getDouble(1));
+        v.setIGV(rs.getDouble(2));
+        v.setImpT(rs.getDouble(3));
+        lis.add(v);
+     }
+   }catch(Exception ex){
+     ex.printStackTrace();
+   }   
+  return lis;   
+  }
 }
+
+
+
+

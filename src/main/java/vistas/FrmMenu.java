@@ -183,7 +183,10 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jmigenerarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmigenerarVentaActionPerformed
-        // TODO add your handling code here:
+        actualizarInterfaz();
+        IFrmGenerarVenta gv= new IFrmGenerarVenta();
+        contenedore.add(gv);
+        gv.show();
     }//GEN-LAST:event_jmigenerarVentaActionPerformed
     
     //Para que no se sobrepongan los frames internos
