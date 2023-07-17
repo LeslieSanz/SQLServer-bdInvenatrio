@@ -7,8 +7,12 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import modelo.Proveedor;
 import util.Conexion;
 
@@ -32,5 +36,18 @@ public class proveedorDAO {
         ex.printStackTrace();
     }
     return lis;
+    }
+    //Eliminar proveedor
+    public boolean eliminar(String codigo) {
+        try {
+            String sql = "delete from Proveedor where cod_prov = '"+codigo+"'";
+            Connection cn=Conexion.getConexion();
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Proveedor eliminado correctamente con sus productos");
+        } catch (SQLException ex) {
+            Logger.getLogger(categoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

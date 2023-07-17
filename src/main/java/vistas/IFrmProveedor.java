@@ -82,6 +82,11 @@ public class IFrmProveedor extends javax.swing.JInternalFrame {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Listar Provedores");
 
@@ -130,6 +135,14 @@ public class IFrmProveedor extends javax.swing.JInternalFrame {
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         mostrarListaProveedor();
     }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+         int fila = tblProveedor.getSelectedRow();
+        provd = new proveedorDAO();
+        String codigo = tblProveedor.getValueAt(fila, 0).toString();
+        provd.eliminar(codigo);
+        mostrarListaProveedor();
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
