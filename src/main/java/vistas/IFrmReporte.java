@@ -23,6 +23,7 @@ public class IFrmReporte extends javax.swing.JInternalFrame {
     ventaDAO vd = new ventaDAO();
     public IFrmReporte() {
         initComponents();
+        setSize(1200,553);
     }
 
     /**
@@ -68,11 +69,11 @@ public class IFrmReporte extends javax.swing.JInternalFrame {
         pnlreporte.setLayout(pnlreporteLayout);
         pnlreporteLayout.setHorizontalGroup(
             pnlreporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 536, Short.MAX_VALUE)
+            .addGap(0, 789, Short.MAX_VALUE)
         );
         pnlreporteLayout.setVerticalGroup(
             pnlreporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 309, Short.MAX_VALUE)
+            .addGap(0, 347, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -89,7 +90,7 @@ public class IFrmReporte extends javax.swing.JInternalFrame {
                         .addComponent(txtanio, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
                         .addComponent(btnlineal)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,9 +100,9 @@ public class IFrmReporte extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtanio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnlineal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlreporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();

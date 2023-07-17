@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Categoria;
 import modelo.Entrada;
@@ -403,8 +404,20 @@ public class IFrmProducto extends javax.swing.JInternalFrame {
             mostrarTablaProdxCat(nomCat);
         }      
     }//GEN-LAST:event_cbxCateItemStateChanged
-
+    
+     //Metodo para mostrar el mensaje de error en las excepciones
+     private void mostrarMensajeError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+        }  
+     
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+       //Excepción para validar que todos los campos estén llenos
+        if (txtCodPro.getText().isEmpty() || txtDescripcion.getText().isEmpty() ||
+           cbxProv.getSelectedIndex()== 0 || txtPrecio.getText().isEmpty()) {
+        mostrarMensajeError("Se debe llenar todos los campos para registrar un producto.");
+        return;
+        }
+        
         producto p = new producto();
         p.setDespro(txtDescripcion.getText());
         p.setPrepro(Double.parseDouble(txtPrecio.getText()));
@@ -422,6 +435,11 @@ public class IFrmProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+    if ( txtCant.getText().isEmpty() ) {
+        mostrarMensajeError("Se debe seleccionar un producto para hacer una entrada.");
+        return;
+        }
+        
         Entrada e = new Entrada();
         e.setCodEnt(txtCodEnt.getText());
         e.setFecEnt(txtFechaEnt.getText());
@@ -436,6 +454,13 @@ public class IFrmProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnMostrarPanelEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarPanelEntradaActionPerformed
+    //Excepción para validar que todos los campos estén llenos
+        if ( cbxCate.getSelectedIndex()== 0 ) {
+        mostrarMensajeError("Se debe seleccionar un producto para hacer una entrada.");
+        return;
+        }
+        
+        
         int fila = tblProd.getSelectedRow();
         String codigo = tblProd.getValueAt(fila, 0).toString();
         txtCodPro.setText(codigo);
