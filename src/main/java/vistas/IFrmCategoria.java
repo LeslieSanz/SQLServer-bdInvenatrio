@@ -5,6 +5,7 @@
 package vistas;
 
 import dao.categoriaDAO;
+import dao.productoDAO;
 import javax.swing.table.DefaultTableModel;
 import modelo.Categoria;
 import org.jfree.chart.*;
@@ -21,7 +22,7 @@ public class IFrmCategoria extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     public IFrmCategoria() {
         initComponents();
-        setSize(1200,553);
+        setSize(966,553);
         establecerColumnas();
         muestraTabla();
 
@@ -45,6 +46,32 @@ public class IFrmCategoria extends javax.swing.JInternalFrame {
          }
     }
     
+    private void muestraGrafico(){
+        DefaultCategoryDataset ds = new DefaultCategoryDataset();
+        for(Categoria p : a.lisCantxCat()){
+           ds.setValue(p.getCantcat(), "Cantidad",p.getNomcat());  
+        }
+        
+        JFreeChart js = ChartFactory.createBarChart("Productos por categorias", "Categoria","Total",ds);
+        
+        // Configurar la inclinación de las etiquetas de las categorías
+        CategoryPlot plot = (CategoryPlot) js.getPlot();
+        CategoryAxis domainAxis = plot.getDomainAxis();
+        domainAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_45); // Inclinar 45 grados
+        
+        //Graficar en memoria
+        ChartPanel cp=new ChartPanel(js);
+        panelCat.removeAll(); //Limpiar el panel
+        panelCat.setLayout(new java.awt.BorderLayout());
+        panelCat.add(cp);
+        panelCat.validate();
+        
+        //Para calcular el stock total
+        productoDAO pd = new productoDAO();
+        int stock = pd.calculaStockTotal();
+        txtStockTotal.setText(stock+"");
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -61,9 +88,8 @@ public class IFrmCategoria extends javax.swing.JInternalFrame {
         tblCategoria = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         btnEliminarCat = new javax.swing.JButton();
-        btnAgregarCat = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtStockTotal = new javax.swing.JTextField();
 
         setClosable(true);
 
@@ -148,6 +174,7 @@ public class IFrmCategoria extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblCategoria.setSelectionBackground(new java.awt.Color(255, 51, 51));
         jScrollPane1.setViewportView(tblCategoria);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
@@ -161,15 +188,15 @@ public class IFrmCategoria extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAgregarCat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonAgregar.png"))); // NOI18N
-        btnAgregarCat.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar"));
-        btnAgregarCat.addActionListener(new java.awt.event.ActionListener() {
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setText("Productos totales:");
+
+        txtStockTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtStockTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarCatActionPerformed(evt);
+                txtStockTotalActionPerformed(evt);
             }
         });
-
-        jLabel6.setText("Productos totales:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -186,22 +213,20 @@ public class IFrmCategoria extends javax.swing.JInternalFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtStockTotal)))
                     .addComponent(panelCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
-                        .addComponent(btnEliminarCat)
-                        .addGap(41, 41, 41)
-                        .addComponent(btnAgregarCat))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnEliminarCat))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(jLabel5)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,13 +239,13 @@ public class IFrmCategoria extends javax.swing.JInternalFrame {
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel1)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel6)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtStockTotal))))))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -229,9 +254,7 @@ public class IFrmCategoria extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEliminarCat)
-                            .addComponent(btnAgregarCat))
+                        .addComponent(btnEliminarCat)
                         .addGap(54, 54, 54))))
         );
 
@@ -253,32 +276,8 @@ public class IFrmCategoria extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBarrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarrasActionPerformed
-
-        DefaultCategoryDataset ds = new DefaultCategoryDataset();
-        for(Categoria p : a.lisCantxCat()){
-           ds.setValue(p.getCantcat(), "Cantidad",p.getNomcat());  
-        }
-        
-        JFreeChart js = ChartFactory.createBarChart("Productos por categorias", "Categoria","Total",ds);
-        
-        // Configurar la inclinación de las etiquetas de las categorías
-        CategoryPlot plot = (CategoryPlot) js.getPlot();
-        CategoryAxis domainAxis = plot.getDomainAxis();
-        domainAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_45); // Inclinar 45 grados
-        
-        //Graficar en memoria
-        ChartPanel cp=new ChartPanel(js);
-        panelCat.removeAll(); //Limpiar el panel
-        panelCat.setLayout(new java.awt.BorderLayout());
-        panelCat.add(cp);
-        panelCat.validate();
+        muestraGrafico();
     }//GEN-LAST:event_btnBarrasActionPerformed
-
-    private void btnAgregarCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCatActionPerformed
-        AgregarCategoria ac = new AgregarCategoria();
-        ac.setVisible(true);
-        setVisible(false);
-    }//GEN-LAST:event_btnAgregarCatActionPerformed
 
     private void btnEliminarCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCatActionPerformed
         int fila = tblCategoria.getSelectedRow();
@@ -286,11 +285,15 @@ public class IFrmCategoria extends javax.swing.JInternalFrame {
         String codigo = tblCategoria.getValueAt(fila, 0).toString();
         a.eliminar(codigo);
         muestraTabla();
+        muestraGrafico();
     }//GEN-LAST:event_btnEliminarCatActionPerformed
+
+    private void txtStockTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStockTotalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarCat;
     private javax.swing.JButton btnBarras;
     private javax.swing.JButton btnEliminarCat;
     private javax.swing.JLabel jLabel1;
@@ -302,8 +305,8 @@ public class IFrmCategoria extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel panelCat;
     private javax.swing.JTable tblCategoria;
+    private javax.swing.JTextField txtStockTotal;
     // End of variables declaration//GEN-END:variables
 }

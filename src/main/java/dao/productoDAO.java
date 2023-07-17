@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -78,5 +79,28 @@ public class productoDAO {
         ex.printStackTrace();
     }
     return lis;
+    }
+    
+    public int calculaStockTotal() {
+    Connection cn = Conexion.getConexion();
+    int stk=0;
+
+    try {
+        String sql = "{? = call fn_stktot()}";
+        CallableStatement st = cn.prepareCall(sql);
+        st.registerOutParameter(1, Types.INTEGER);
+        st.execute();
+        stk = st.getInt(1);
+
+    } catch (SQLException ex) {
+        Logger.getLogger(entradaDAO.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        try {
+            cn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(entradaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    return stk;
     }
 }
