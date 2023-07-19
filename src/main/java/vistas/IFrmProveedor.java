@@ -22,7 +22,7 @@ public class IFrmProveedor extends javax.swing.JInternalFrame {
     public IFrmProveedor() {
         initComponents();
         establecerColumnas();
-        setSize(966,553);
+        setSize(1000, 600);
     }
     
     public void establecerColumnas(){

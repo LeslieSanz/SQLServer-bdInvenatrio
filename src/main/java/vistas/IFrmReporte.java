@@ -23,7 +23,7 @@ public class IFrmReporte extends javax.swing.JInternalFrame {
     ventaDAO vd = new ventaDAO();
     public IFrmReporte() {
         initComponents();
-        setSize(966,553);
+        setSize(1000, 600);
     }
 
     /**

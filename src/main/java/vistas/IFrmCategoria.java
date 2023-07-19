@@ -22,7 +22,7 @@ public class IFrmCategoria extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     public IFrmCategoria() {
         initComponents();
-        setSize(966,553);
+        setSize(1000, 600);
         establecerColumnas();
         muestraTabla();
 

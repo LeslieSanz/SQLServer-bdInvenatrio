@@ -36,7 +36,7 @@ public class IFrmProducto extends javax.swing.JInternalFrame {
     
     public IFrmProducto() {
         initComponents();
-        setSize(966,553);
+        setSize(1000, 600);
         pnlEntrada.setVisible(false);
         mostrarCat();
         mostrarProv();

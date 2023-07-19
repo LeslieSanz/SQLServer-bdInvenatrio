@@ -6,6 +6,7 @@ package vistas;
 
 import dao.detalleDAO;
 import dao.ventaDAO;
+import javax.swing.JOptionPane;
 import modelo.Detalle;
 import modelo.Venta;
 
@@ -20,9 +21,13 @@ public class IFrmGenerarVenta extends javax.swing.JInternalFrame {
      */
     public IFrmGenerarVenta() {
         initComponents();
-        setSize(966,553);
+        setSize(1000, 600);
     }
-
+    
+      //Metodo para mostrar el mensaje de error en las excepciones
+     private void mostrarMensajeError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,6 +120,13 @@ public class IFrmGenerarVenta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btngenerarfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenerarfActionPerformed
+        //btngenerarf
+        //Excepción para validar que todos los campos estén llenos
+        if (txtcodven.getText().isEmpty()) {
+        mostrarMensajeError("Se debe llenar todos los campos para registrar un producto.");
+        return;
+        }
+        
         String codven=txtcodven.getText();
         ventaDAO vd =new ventaDAO();
         String vendatos ="";

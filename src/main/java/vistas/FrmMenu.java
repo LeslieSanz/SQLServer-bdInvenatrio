@@ -16,6 +16,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public FrmMenu() {
         initComponents();
         this.setLocationRelativeTo(this);
+        setSize(1000, 650);
     }
 
     /**
