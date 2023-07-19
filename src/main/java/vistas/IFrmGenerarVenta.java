@@ -20,7 +20,7 @@ public class IFrmGenerarVenta extends javax.swing.JInternalFrame {
      */
     public IFrmGenerarVenta() {
         initComponents();
-        setSize(965,553);
+        setSize(966,553);
     }
 
     /**
@@ -119,7 +119,7 @@ public class IFrmGenerarVenta extends javax.swing.JInternalFrame {
         ventaDAO vd =new ventaDAO();
         String vendatos ="";
         for (Venta v : vd.lisVentaDatos(codven)) {
-            vendatos += "---------------------------FACTURA DE VENTA------------------------------" + "\n";
+            vendatos += "---------------------------------------FACTURA DE VENTA----------------------------------------" + "\n";
             vendatos += "Cod de Venta:     " + v.getCodven()+ "\n"; 
             vendatos += "             Fecha:     " + v.getFecVen()+ "\n"; 
             vendatos += "       Vendedor:     " + v.getNomVen() + "\n";
@@ -128,18 +128,18 @@ public class IFrmGenerarVenta extends javax.swing.JInternalFrame {
         String detalle ="";
         detalleDAO dd =new detalleDAO();
         for (Detalle d : dd.listaDetalles(codven)) {
-            detalle += "----------------------------------------------------------------------------------" + "\n";
-            detalle += "Cod_pro     Descripcion                 Cant         Precio           Subtotal " + "\n";
+            detalle += "-----------------------------------------------------------------------------------------------------------" + "\n";
+            detalle += "Cod_pro     Descripcion                            Cant           Precio               Subtotal " + "\n";
             detalle += "" + d.getCodPro()+"         "+d.getDescripcion()+
                                 "        "+d.getCantDeta()+"           "+d.getPrePro()+
                                 "                 "+d.getSubtotal()+"\n";
-            detalle += "----------------------------------------------------------------------------------" + "\n";
+            detalle += "-----------------------------------------------------------------------------------------------------------" + "\n";
         }
         
         String venTot ="";
         for (Venta v : vd.lisTotVen(codven)) {
             venTot += "Op. Gravadas:   S/      " + v.getOpGrav()+ "\n"; 
-            venTot += "        IGV-185:   S/      " + v.getIGV()+ "\n";
+            venTot += "         IGV-185:   S/      " + v.getIGV()+ "\n";
             venTot += "   Importe Tot:   S/      " + v.getImpT()+ "\n";
         }
         
